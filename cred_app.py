@@ -189,6 +189,7 @@ queryleveldf=df[df["operator"]=="SinkOperator"]
 
 # Create a Dash app
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP],suppress_callback_exceptions=True)
+server=app.server
 # Define inline styles for the tabs, card, and dashboard
 tab_style = {
     'color': '#FFFFFF',            # Text color for tabs
@@ -391,7 +392,6 @@ def update_searched_query_tabs(n_clicks, query_id):
     ])
     return searched_tabs
 import plotly.express as px
-# ... (Previous code remains unchanged)
 @app.callback(
     Output('stacked-bar-graph-div', 'children'),
     [Input('graph-type-dropdown', 'value'),
@@ -773,4 +773,4 @@ def update_operator_content(operator_type, tab_selected):
     return operator_content
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=8059)
+    app.run_server(debug=True)
